@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pqh.mapper.ProductMapper">
+	<resultMap id="productRM" type="com.pqh.pojo.Products" >
+        <id column="product_id" property="productId"></id>
+       <result column="product_name" property="productName"></result>
+       <result column="price" property="price"></result>
+       <result column="imgurl" property="imgurl"></result>       
+       <result column="tittle" property="tittle"></result>
+       <result column="url" property="url"></result>
+    </resultMap>
+    <select id="findProductsAll" resultMap="productRM">
+        select * from products;
+    </select>
+	
+	<select id="findProductsById" 
+			parameterType="int"
+			resultMap="productRM">
+		select * from products where product_id=#{productId};	
+	</select>
+
+
+
+
+</mapper>
